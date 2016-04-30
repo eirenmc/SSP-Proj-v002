@@ -86,7 +86,7 @@ router.get('/projectList', function (req, res, next) {
 
 router.get('/logout', function(req, res, next) {
   // To logout I simply destroy the session (and thus the username property on it)
- // req.session.destroy();
+  req.session.destroy();
   username = "";
   res.render('login');  
 });

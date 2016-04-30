@@ -8,7 +8,7 @@ var fs = require('fs');
 var multer = require('multer');
 var routes = require('./routes/index');
 
-//var session = require('express-session');
+var session = require('express-session');
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //Mongo
@@ -74,7 +74,7 @@ var storageMethod = multer.diskStorage({
 });
 
 app.use('/', multer({storage: storageMethod}).any());
-//app.use('/', routes);
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
