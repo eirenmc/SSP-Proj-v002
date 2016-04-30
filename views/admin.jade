@@ -1,23 +1,26 @@
 extends layout
 
 block content
-  h1= Admin
-  p Welcome to #{title}
+  div.row
+    h1.col-xs-12.col-sm-6.col-md-8 Admin
   br
+  div.row 
+    br
+    p.col-xs-10 Here You can control you portfolio. You can create a new project for your portfolio, edit a project in your portfolio    
+    br
+  div.row
+    br
+    br
+    a.col-xs-3(href='/projectList')
+        button.btn.btn-default Edit Portfolio Project
   br
-  p Here you can control you portfolio. You can create a new project for your portfolio, edit a project in your portfolio, choose a background colour for your portfolio or use some of the other options on offer to you.
-    div
-        a(href='/projectList')
-            button Edit an Portfolio piece
-    div
-        a(href='/uploadFile')
-            button Create a new Portfolio piece
-    div
-        p Background Portfolio picker
-        p Other options
-        
-        
-    div
-        a(href='/loginAccount')
-            button Logout
+  div.row
+    a.col-xs-3(href='/projectEntry')
+        button.btn.btn-default New Portfolio Project   
+  div.row
+    br
+    br
+    br
+    a.col-xs-12(href='/loginAccount')
+        button.btn.btn-default Logout
         

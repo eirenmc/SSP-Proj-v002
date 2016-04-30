@@ -1,5 +1,8 @@
 body {
-  padding: 50px;
+  padding: 0px;
+  margin:0px;
+  margin-left:5%;
+  margin-right:5%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -11,13 +14,43 @@ a {
   width:40%;
 }
 
-.container-fluid{
-  padding-left: 2%;
+.container{
+  margin-left: 20%;
 }
 
 form{
   padding-left: 1%;
 }
 
+@media screen and (min-width: 700px) {
+  body{
+    margin-left:5%;
+    margin-right:5%;
+  }
+  
+  .smallInputs{
+    width:60%;
+  }
+}
 
+@media screen and (min-width: 768px) {
+  body{
+    margin-left:25%;
+    margin-right:5%;
+  }
+  
+  .smallInputs{
+    width:80%;
+  }
+  
+  .container{
+  margin-left: 10%;
+}
+}
 
+@media screen and (min-width: 1000px) {
+  body{
+    margin-left:20%;
+  }
+  
+}

@@ -24,23 +24,21 @@ router.get('/', function (req, res, next) {
   res.render('index', {title:'Portfolio Home Page'});
 });
 
-router.get('/uploadFile', function (req, res, next) {
-  res.render('uploadFile');
-});
-
-router.post('/uploadFile', function (req, res, next) {
-  console.log(req.body);
-  console.log(req.file);
-});
-
 router.post('loginAccount', function(req,res, next){
     username = req.body.username;
     password = req.body.password;
 });
 
 /* Renders the create portfolio piece page if button clicked */
+router.get('/projectEntry', function (req, res, next) {
+  res.render('projectEntry', { title: 'Portfolio Project' });
+});
+
+/* Renders the create portfolio piece page if button clicked */
 router.post('/projectEntry', function (req, res, next) {
-  res.render('projectEntry', { title: 'Create a Portfolio Piece' });
+  //console.log(req.body);
+  //console.log(req.file);
+  res.render('admin', { title: 'Portfolio Project' });
   
   /////////////////////////////////////////////////////////////////
   // MongoDB
@@ -55,10 +53,6 @@ router.post('/projectEntry', function (req, res, next) {
     });
    //////////////////////////////////////////////////////////// 
 
-});
-
-router.post('projectEntry', function(req,res,next){
-    res.render('projectEntry');
 });
 
 /* Renders the login page if button clicked */
