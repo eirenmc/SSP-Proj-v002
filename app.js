@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static('uploads'));
+app.use(express.static('/public/uploads'));
 /*
 var multerOptions = {
   dest: './uploads/',
@@ -55,16 +55,16 @@ app.use(multer(multerOptions));
 var storageMethod = multer.diskStorage({
     destination: function (req, file, cb) {
         console.log("In destination");
-        fs.exists('./uploads/', function(exists){
+        fs.exists('./public/uploads/', function(exists){
             if(!exists){
                 //fs.mkdir('./bin/uploads/', function(error){
-                  fs.mkdir('./uploads/', function(error){
-                        cb(error, './uploads/');
+                  fs.mkdir('./public/uploads/', function(error){
+                        cb(error, './public/uploads/');
                     })    
                 }
         
             else{
-                    cb(null, 'uploads');
+                    cb(null, './public/uploads');
                 }
             })
         },
