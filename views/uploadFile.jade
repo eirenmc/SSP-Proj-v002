@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 File Upload
+  p Please upload a portfolio piece that you want to display on your portfolio :)
+  
+  form(action='/projectEntry', method='POST', enctype='multipart/form-data')
+    input(type='file', name='file')
+    input(type='submit', value='Upload')
+    
+  p Or  
+  
+  a(href='admin')
+    button Return to Admin page

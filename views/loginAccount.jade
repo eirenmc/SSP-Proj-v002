@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1= Login
+  p Welcome to #{title}
+    div
+        form(action="/admin" method="post" class='style')
+            label(for='username') Username:
+            br
+            input(type='text' name='username' required=true)
+            br
+            br
+            label(for='password') Password:
+            br
+            input(type='password', name='password' required=true)
+            br
+            br
+            input(type='submit', value='submit')
+            br
+        br
+        div
+            a(href='/createAccount')
+                button Create An Account 
+        br
+        div
+            a(href='/')
+                button Return to Portfolio    

@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1 New Project Portfolio Piece
+  p Welcome to #{title}
+  
+  form(action="/admin" method="post" class='style' enctype='multipart/form-data')
+            label(for='projectTitle') Project Title:
+            br
+            input(type='text' name='projectTitleText' placeholder='Project Title' required=true)
+            br
+            br
+            label(for='date') Date:
+            br
+            input(type='date', name='date' required=false)
+            br
+            br
+            label(for='projectDesc') Project Description:
+            br
+            input(type='text' name='projectDescText' placeholder='Project Description' required=true)
+            br
+            br
+            label(for='projectTags') Project Tags:
+            br
+            input(type='text' name='projectTagsText' placeholder='Project Tags' required=false)
+            br
+            br
+            input(type='submit', value='submit')
+            br
+  
+  a(href='admin')
+    button Return to Admin page

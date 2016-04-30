@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= Admin
+  p Welcome to #{title}
+  br
+  br
+  p Here you can control you portfolio. You can create a new project for your portfolio, edit a project in your portfolio, choose a background colour for your portfolio or use some of the other options on offer to you.
+    div
+        a(href='/projectList')
+            button Edit an Portfolio piece
+    div
+        a(href='/uploadFile')
+            button Create a new Portfolio piece
+    div
+        p Background Portfolio picker
+        p Other options
+        
+        
+    div
+        a(href='/loginAccount')
+            button Logout
+        
