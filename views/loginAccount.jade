@@ -1,27 +1,40 @@
 extends layout
 
 block content
-  h1= Login
-  p Welcome to #{title}
-    div
-        form(action="/admin" method="post" class='style')
-            label(for='username') Username:
-            br
-            input(type='text' name='username' required=true)
-            br
-            br
-            label(for='password') Password:
-            br
-            input(type='password', name='password' required=true)
-            br
-            br
-            input(type='submit', value='submit')
-            br
+    div.row
+        h1.col-xs-12.col-sm-6.col-md-8 Login
+    div.row 
         br
-        div
-            a(href='/createAccount')
-                button Create An Account 
-        br
-        div
-            a(href='/')
-                button Return to Portfolio    
+        p.col-xs-12.col-sm-6.col-md-8 Welcome to #{title}
+    div.row
+        div.col-xs-12.col-sm-6.col-md-8
+            br
+            br
+            form(action="/admin" method="post" class='style')
+                label(for='username') Username:
+                br
+                input(class='form-control smallInputs' placeholder='Username' type='text' name='username' required=true)
+                br
+                br
+                label(for='password') Password:
+                br
+                input(class='form-control smallInputs' placeholder='Password' type='password', name='password' required=true)
+                br
+                br
+                input.btn.btn-default(type='submit', value='submit')
+                br
+                br
+                br
+                br
+                br
+        div.row
+            div.col-xs-12.col-sm-6.col-md-8
+                a(href='/createAccount')
+                    button.btn.btn-default Create An Account
+                br
+            div.col-xs-12.col-sm-6.col-md-8
+        div.row
+            br
+            div.col-xs-12.col-sm-6.col-md-8
+                a(href='/')
+                    button.btn.btn-default Return to Portfolio

@@ -1,32 +1,42 @@
 extends layout
 
 block content
-  h1 New Project Portfolio Piece
-  p Welcome to #{title}
-  
-  form(action="/admin" method="post" class='style' enctype='multipart/form-data')
-            label(for='projectTitle') Project Title:
-            br
-            input(type='text' name='projectTitleText' placeholder='Project Title' required=true)
-            br
-            br
-            label(for='date') Date:
-            br
-            input(type='date', name='date' required=false)
-            br
-            br
-            label(for='projectDesc') Project Description:
-            br
-            input(type='text' name='projectDescText' placeholder='Project Description' required=true)
-            br
-            br
-            label(for='projectTags') Project Tags:
-            br
-            input(type='text' name='projectTagsText' placeholder='Project Tags' required=false)
-            br
-            br
-            input(type='submit', value='submit')
-            br
-  
-  a(href='admin')
-    button Return to Admin page
+  div.row
+    h1.col-xs-12.col-sm-6.col-md-8 New Project Portfolio Piece
+  div.row 
+    br
+    br
+    br
+    br
+    br
+    p.col-xs-12.col-sm-6.col-md-8 Welcome to creating a new protfolio piece, please fill in the details and choose an image, video or SWF to upload
+  div.row
+    div.col-xs-12.col-sm-6.col-md-8
+    br
+    br
+    form(action="/admin" method="post" class='style' enctype='multipart/form-data')
+      label(for='projectTitle') Project Title:
+      br
+      input(class='form-control smallInputs' type='text' name='projectTitleText' placeholder='Project Title' required=true)
+      br
+      br
+      label(for='projectDesc') Project Description:
+      br
+      input(class='form-control smallInputs' placeholder='Project Description' row='3' type='textarea' name='projectDescText' required=true)
+      br
+      br
+      label(for='projectTags') Project Tags:
+      br
+      input(class='form-control smallInputs' placeholder='Project Tags' type='text' name='projectTagsText' required=false)
+      br
+      br
+      input.btn.btn-default(type='submit', value='submit')
+      br
+      br
+      br
+      br
+      br
+  div.row
+    div.col-xs-12.col-sm-6.col-md-8   
+      a(href='admin')
+        button.btn.btn-default Return to Admin page

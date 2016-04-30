@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+.smallInputs{
+  width:40%;
+}
+
+.container-fluid{
+  padding-left: 2%;
+}
+
+form{
+  padding-left: 1%;
+}
+
+
+
