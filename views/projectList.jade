@@ -3,7 +3,15 @@ extends layout
 block content
     div.container
         h1 Edit your Portfolio
-        
+        div.row
+          div.col-xs-12.col-sm-6.col-md-8 
+            br
+            br
+            a(href='admin')
+              button.btn.btn-default Return to Admin page
+        br
+        br
+        br
         -var values = project;
         ol
             each val in values ? values : ['There are no values']
@@ -20,6 +28,3 @@ block content
                       input(type='submit' name='delete' value='Delete')
                       input(type='hidden' name='id' value=val.id)
                 br
-    
-    a(href='admin')
-      button Return to Admin page

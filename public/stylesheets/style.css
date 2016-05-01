@@ -30,6 +30,11 @@ form{
   padding-left: 1%;
 }
 
+ol{
+  text-decoration: none;
+  list-style-type: none;
+}
+
 .jumbtron{
   padding:3%;
 }

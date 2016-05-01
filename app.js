@@ -54,7 +54,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('/public/uploads'));
 
-//
+// This variable and its method is used to specify the folder which files will be stored.
+// If the folder uploads already exists it will use this but if it doesn't exist, it will create one.
 var storageMethod = multer.diskStorage({
   destination: function (req, file, cb) {
     console.log("In destination");
@@ -63,18 +64,19 @@ var storageMethod = multer.diskStorage({
         fs.mkdir('./public/uploads/', function (error) {
           cb(error, './public/uploads/');
         })
-      }
-
-      else {
+      } else {
         cb(null, './public/uploads');
       }
     })
   },
+  // Function that assigns a new filename to files that are uploaded
   filename: function (req, file, cb) {
     cb(null, Date.now() + '_' + file.originalname);
   }
 });
 
+// Telling the app to use multer and the storage method
+// Also telling the application to routes
 app.use('/', multer({ storage: storageMethod }).any());
 app.use('/', routes);
 

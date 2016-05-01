@@ -1,5 +1,5 @@
 {
-  "name": "SSP-Assignment02-PortfolioBuildingApp-001",
+  "name": "SSP-Proj-v002",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -16,7 +16,6 @@
     "mongodb": "^2.1.16",
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
-    "serve-favicon": "~2.3.0",
-    "simple-color-picker": "^0.1.0"
+    "serve-favicon": "~2.3.0"
   }
 }
