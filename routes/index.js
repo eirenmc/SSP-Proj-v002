@@ -12,6 +12,10 @@ var password = "";
 // An Array that will hold all the projects and their contents
 var allProjects = [];
 
+// Varaible to act a counter/unique id as it increments, i know I could also use the mongo assigned id, 
+// but I cant seem to get it to  work, I'm probably calling it wrong
+var projectCounter = 0;
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // MongoDB
 // I am requiring mongoDB and client so I can establish a database and connection so secrets can
@@ -43,10 +47,13 @@ router.get('/projectEntry', function (req, res, next) {
 router.post('/projectEntry', function (req, res, next) {
 
   var project = {};
+  project.id = projectCounter;
   project.title = req.body.projectTitleText;
   project.desc = req.body.projectDescText;
   project.tags = req.body.projectTagsText;
 
+  projectCounter++;
+  
   allProjects.push(project);
 
   /////////////////////////////////////////////////////////////////
@@ -68,7 +75,7 @@ router.post('/projectEntry', function (req, res, next) {
           cursor.toArray(function (err, docs) {
             res.render('portfolio', {project: docs}); 
             console.log("Insertion complete");
-            conn.close();
+           // conn.close();
           });
         }
       });
@@ -80,7 +87,7 @@ router.post('/projectEntry', function (req, res, next) {
 });
 
 router.get('/portfolio', function (req, res, next){
-    res.render('portfolio', {project: allProjects, username : username}); 
+      res.render('portfolio', {project: allProjects, username : username});   
 });
 
 /* Renders the login page if button clicked */
@@ -117,8 +124,17 @@ router.get('/projectList', function (req, res, next) {
   if (username.length == 0) {
     res.render('loginAccount', { title: 'login' });
   } else {
-    res.render('projectList', { title: 'Portfolio Pieces' });
+    res.render('projectList', {project: allProjects, username : username});
   }
+});
+
+router.post('/deleteme', function(req, res, next){
+    for(var j = 0; j < allProjects.length; j++){
+        if(req.body.id == allProjects[j].id){
+            allProjects.splice(j, 1);
+        }
+    }
+    res.redirect("/projectList");
 });
 
 router.get('/logout', function (req, res, next) {
@@ -131,8 +147,6 @@ router.get('/logout', function (req, res, next) {
 
 /* Renders the create login page if button clicked */
 router.post('/createAccount', function (req, res, next) {
-  //username = req.body.username;
-  //username = username.trim();
   username = req.body.username;
   password = req.body.password;
   username = username.trim();

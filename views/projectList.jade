@@ -1,12 +1,25 @@
 extends layout
 
 block content
-  div.container
-    h1= Login
-    p Welcome to #{title}
-    
-    ul
-      li.displayAllTheProjectTitlesOrWholeThing
+    div.container
+        h1 Edit your Portfolio
+        
+        -var values = project;
+        ol
+            each val in values ? values : ['There are no values']
+                li
+                    strong
+                        p Project Title: 
+                    p #{val.title}
+                    strong
+                        p Project Description:
+                    p #{val.desc}
+                    p #{val.tags}
+                    br
+                    form(method='POST', action='/deleteme')
+                      input(type='submit' name='delete' value='Delete')
+                      input(type='hidden' name='id' value=val.id)
+                br
     
     a(href='admin')
       button Return to Admin page

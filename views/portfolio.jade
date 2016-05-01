@@ -1,8 +1,9 @@
 extends layout
 
 block content
-    h1 #{username}  Portfolio
     div.container
+        h1 #{username}  Portfolio
+        
         -var values = project;
         ol
             each val in values ? values : ['There are no values']
