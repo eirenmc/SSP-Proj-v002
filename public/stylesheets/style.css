@@ -34,14 +34,9 @@ form{
   padding:3%;
 }
 
-@media screen and (min-width: 700px) {
-
-}
-
-@media screen and (min-width: 768px) {
-
-}
-
-@media screen and (min-width: 1000px) {
-
+@media screen and (max-width: 700px) {
+  .container{
+    width:70%;
+    margin-left:20%;
+  }
 }

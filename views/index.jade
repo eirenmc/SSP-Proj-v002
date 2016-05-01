@@ -3,12 +3,30 @@ extends layout
 block content
   div.jumbotron
     div.extraPadding
-      h1= title
-      br
-      br
-      div.entries
-      div
-        p Welcome to your very own portfolio builder, this application allows you to build, edit and publish your portfolio
+      div.row
+        h1.col-xs-12.col-sm-6.col-md-8 Portfolio Builder
         br
-        a(href='/loginAccount' id='login')
-          button.btn.btn--primary.btn-lg Click to login
+      div.row 
+        br
+        p.col-xs-12.col-sm-6.col-md-8 Welcome to your very own portfolio builder, this application allows you to build, edit and publish your portfolio
+        br
+      div.row
+        br
+        p.col-xs-12.col-sm-6.col-md-8 Please login or create an account
+      div.row
+          br
+          div.col-xs-12.col-sm-6.col-md-8
+            a(href='/loginAccount' id='login')
+              button.btn.btn--primary.btn-lg Login to Account
+          br
+      div.row
+        div.col-xs-12.col-sm-6.col-md-8
+          br
+          p.col-xs-12.col-sm-6.col-md-8 Or
+      div.row
+          div.col-xs-12.col-sm-6.col-md-8
+            a(href='/createAccount' id='login')
+              button.btn.btn--primary.btn-lg Create an Account
+              br
+        
+        

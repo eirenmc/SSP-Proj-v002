@@ -27,6 +27,7 @@ var url = process.env.CUSTOMCONNSTR_portfolioBuilderEiren || 'mongodb://localhos
 /* GET home page. */
 router.get('/', function (req, res, next) {
   //res.render('index', { project: docs });
+  res.render('index');
 });
 
 /* Renders the create portfolio piece page if button clicked */
