@@ -1,16 +1,18 @@
+// Requiring node modules
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var path = require('path');
-var files = new Array();
 
+// Variables that will be used later to store the username and password of 
+// the account that has been created.
 var username = "";
 var password = "";
 
+// An Array that will hold all the projects and their contents
 var allProjects = [];
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
 // MongoDB
 // I am requiring mongoDB and client so I can establish a database and connection so secrets can
 // be stored in the database
@@ -73,7 +75,7 @@ router.post('/projectEntry', function (req, res, next) {
     }
   });
   //////////////////////////////////////////////////////////// 
-    
+
   res.render('admin', { title: 'Portfolio Project' });
 });
 
@@ -97,14 +99,13 @@ router.get('/admin', function (req, res, next) {
 /* Renders the admin page if button clicked */
 router.post('/loginAccount', function (req, res, next) {
   if ((username == req.body.username) && (password == req.body.password)) {
-    console.log("hi");
-    res.render('admin', { title: 'Manage your portfolio' });
-  }
-  else {
-    console.log("bye");
-    res.render('loginAccount', { title: 'login' });
-  }
-  //res.render('admin', { title: 'Manage your portfolio' });
+     console.log("hi");
+     res.render('admin', { title: 'Manage your portfolio' });
+   }
+   else {
+     console.log("bye");
+     res.render('loginAccount', { title: 'login' });
+   }
 });
 
 /* Renders the project list page if button clicked */
@@ -119,10 +120,8 @@ router.get('/projectList', function (req, res, next) {
 router.get('/logout', function (req, res, next) {
   // To logout I simply destroy the session (and thus the username property on it)
   //req.session.destroy();
-
-  username = "";
-  password = "";
-
+   username = "";
+   password = "";
   res.render('loginAccount');
 });
 
@@ -130,15 +129,6 @@ router.get('/logout', function (req, res, next) {
 router.post('/createAccount', function (req, res, next) {
   //username = req.body.username;
   //username = username.trim();
-  /*
-    if (username.length == 0) {
-      res.redirect('/login');
-      console.log('Couldnt login sorry :( ');
-    }
-    else {
-      req.session.username = username;
-      res.redirect('/');
-    }*/
   username = req.body.username;
   password = req.body.password;
   username = username.trim();

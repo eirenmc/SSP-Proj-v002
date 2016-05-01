@@ -1,41 +1,42 @@
 extends layout
 
 block content
-    div.row
-        h1.col-xs-12.col-sm-6.col-md-8 Login
-    div.row 
-        br
-        p.col-xs-12.col-sm-6.col-md-8 Welcome to #{title}
-    div.row
-        div.col-xs-12.col-sm-6.col-md-8
+    div.container
+        div.row
+            h1.col-xs-12.col-sm-6.col-md-8 Login
+        div.row 
             br
+            p.col-xs-12.col-sm-6.col-md-8 Welcome to #{title}
+        div.row
+            div.col-xs-12.col-sm-6.col-md-8
+                br
+                br
+                form(action="/loginAccount" method="post" class='style')
+                    label(for='username') Username:
+                    br
+                    input(class='form-control smallInputs' placeholder='Username' type='text' name='username' required=true)
+                    br
+                    br
+                    label(for='password') Password:
+                    br
+                    input(class='form-control smallInputs' placeholder='Password' type='password', name='password' required=true)
+                    br
+                    br
+                    input.btn.btn-default(type='submit', value='submit')
+                    br
+                    br
+                    br
+                    br
+                    br
+        div.row
             br
-            form(action="/loginAccount" method="post" class='style')
-                label(for='username') Username:
+            div.col-xs-12.col-sm-6.col-md-8
+                a(href='/createAccount')
+                    button.btn.btn-default Create An Account
                 br
-                input(class='form-control smallInputs' placeholder='Username' type='text' name='username' required=true)
-                br
-                br
-                label(for='password') Password:
-                br
-                input(class='form-control smallInputs' placeholder='Password' type='password', name='password' required=true)
-                br
-                br
-                input.btn.btn-default(type='submit', value='submit')
-                br
-                br
-                br
-                br
-                br
-    div.row
-        br
-        div.col-xs-12.col-sm-6.col-md-8
-            a(href='/createAccount')
-                button.btn.btn-default Create An Account
+            div.col-xs-12.col-sm-6.col-md-8
+        div.row
             br
-        div.col-xs-12.col-sm-6.col-md-8
-    div.row
-        br
-        div.col-xs-12.col-sm-6.col-md-8
-            a(href='/')
-                button.btn.btn-default Return to Portfolio
+            div.col-xs-12.col-sm-6.col-md-8
+                a(href='/')
+                    button.btn.btn-default Return to Portfolio

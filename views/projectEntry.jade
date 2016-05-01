@@ -1,45 +1,46 @@
 extends layout
 
 block content
-  div.row
-    h1.col-xs-12.col-sm-6.col-md-8 New Project Portfolio Piece
-  div.row 
-    br
-    br
-    br
-    p.col-xs-12.col-sm-6.col-md-8 Welcome to creating a new protfolio piece, please fill in the details and choose an image, video or SWF to upload
-  div.row
-    div.col-xs-12.col-sm-6.col-md-8
+  div.container
+    div.row
+      h1.col-xs-12.col-sm-6.col-md-8 New Project Portfolio Piece
+    div.row 
       br
-      form(action='/projectEntry' method='post' class='style' enctype='multipart/form-data')
-        label(for='projectTitle') Project Title:
+      br
+      br
+      p.col-xs-12.col-sm-6.col-md-8 Welcome to creating a new protfolio piece, please fill in the details and choose an image, video or SWF to upload
+    div.row
+      div.col-xs-12.col-sm-6.col-md-8
         br
-        input(class='form-control smallInputs' type='text' name='projectTitleText' placeholder='Project Title' required=true)
-        br
-        br
-        label(for='projectDesc') Project Description:
-        br
-        input(class='form-control smallInputs' placeholder='Project Description' row='3' type='textarea' name='projectDescText' required=true)
-        br
-        br
-        label(for='projectTags') Project Tags:
-        br
-        input(class='form-control smallInputs' placeholder='Project Tags' type='text' name='projectTagsText' required=false)
-        br
-        br
-        label(for='projectFile') Please upload an image, video or SWF
-        br
-        br
-        input(type='file', name='file')
-        br
-        br
-        br
-        input.btn.btn-default(type='submit', value='upload')
-        br
-        br
-        br
-        br
-  div.row
-    div.col-xs-12.col-sm-6.col-md-8   
-      a(href='admin')
-        button.btn.btn-default Return to Admin page
+        form(action='/projectEntry' method='post' class='style' enctype='multipart/form-data')
+          label(for='projectTitle') Project Title:
+          br
+          input(class='form-control smallInputs' type='text' name='projectTitleText' placeholder='Project Title' required=true)
+          br
+          br
+          label(for='projectDesc') Project Description:
+          br
+          input(class='form-control smallInputs' placeholder='Project Description' row='3' type='textarea' name='projectDescText' required=true)
+          br
+          br
+          label(for='projectTags') Project Tags:
+          br
+          input(class='form-control smallInputs' placeholder='Project Tags' type='text' name='projectTagsText' required=false)
+          br
+          br
+          label(for='projectFile') Please upload an image, video or SWF
+          br
+          br
+          input(type='file', name='file')
+          br
+          br
+          br
+          input.btn.btn-default(type='submit', value='upload')
+          br
+          br
+          br
+          br
+    div.row
+      div.col-xs-12.col-sm-6.col-md-8   
+        a(href='admin')
+          button.btn.btn-default Return to Admin page

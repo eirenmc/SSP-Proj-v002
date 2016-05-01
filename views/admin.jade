@@ -1,26 +1,27 @@
 extends layout
 
 block content
-  div.row
-    h1.col-xs-12.col-sm-6.col-md-8 Admin
-  br
-  div.row 
+  div.container
+    div.row
+      h1.col-xs-12.col-sm-6.col-md-8 Admin
     br
-    p.col-xs-10 Here You can control you portfolio. You can create a new project for your portfolio, edit a project in your portfolio    
+    div.row 
+      br
+      p.col-xs-10 Here You can control you portfolio. You can create a new project for your portfolio, edit a project in your portfolio    
+      br
+    div.row
+      br
+      br
+      a.col-xs-3(href='/projectList')
+          button.btn.btn-default Edit Portfolio Project
     br
-  div.row
-    br
-    br
-    a.col-xs-3(href='/projectList')
-        button.btn.btn-default Edit Portfolio Project
-  br
-  div.row
-    a.col-xs-3(href='/projectEntry')
-        button.btn.btn-default New Portfolio Project   
-  div.row
-    br
-    br
-    br
-    a.col-xs-12(href='/logout')
-        button.btn.btn-default Logout
-        
+    div.row
+      a.col-xs-3(href='/projectEntry')
+          button.btn.btn-default New Portfolio Project   
+    div.row
+      br
+      br
+      br
+      a.col-xs-12(href='/logout')
+          button.btn.btn-default Logout
+          
