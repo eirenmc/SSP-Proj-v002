@@ -30,7 +30,6 @@ var url = process.env.CUSTOMCONNSTR_portfolioBuilderEiren || 'mongodb://localhos
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  //res.render('index', { project: docs });
   res.render('index');
 });
 
@@ -53,7 +52,7 @@ router.post('/projectEntry', function (req, res, next) {
   project.tags = req.body.projectTagsText;
 
   projectCounter++;
-  
+
   allProjects.push(project);
 
   /////////////////////////////////////////////////////////////////
@@ -73,9 +72,9 @@ router.post('/projectEntry', function (req, res, next) {
         else {
           var cursor = conn.collection('projects').find();
           cursor.toArray(function (err, docs) {
-            res.render('portfolio', {project: docs}); 
+            res.render('portfolio', { project: docs });
             console.log("Insertion complete");
-           // conn.close();
+            // conn.close();
           });
         }
       });
@@ -86,8 +85,8 @@ router.post('/projectEntry', function (req, res, next) {
   res.render('admin', { title: 'Portfolio Project' });
 });
 
-router.get('/portfolio', function (req, res, next){
-      res.render('portfolio', {project: allProjects, username : username});   
+router.get('/portfolio', function (req, res, next) {
+  res.render('portfolio', { project: allProjects, username: username });
 });
 
 /* Renders the login page if button clicked */
@@ -110,13 +109,13 @@ router.get('/admin', function (req, res, next) {
 /* Renders the admin page if button clicked */
 router.post('/loginAccount', function (req, res, next) {
   if ((username == req.body.username) && (password == req.body.password)) {
-     console.log("hi");
-     res.render('admin', { title: 'Manage your portfolio' });
-   }
-   else {
-     console.log("bye");
-     res.render('loginAccount', { title: 'login' });
-   }
+    console.log("hi");
+    res.render('admin', { title: 'Manage your portfolio' });
+  }
+  else {
+    console.log("bye");
+    res.render('loginAccount', { title: 'login' });
+  }
 });
 
 /* Renders the project list page if button clicked */
@@ -124,24 +123,24 @@ router.get('/projectList', function (req, res, next) {
   if (username.length == 0) {
     res.render('loginAccount', { title: 'login' });
   } else {
-    res.render('projectList', {project: allProjects, username : username});
+    res.render('projectList', { project: allProjects, username: username });
   }
 });
 
-router.post('/deleteme', function(req, res, next){
-    for(var j = 0; j < allProjects.length; j++){
-        if(req.body.id == allProjects[j].id){
-            allProjects.splice(j, 1);
-        }
+router.post('/deleteme', function (req, res, next) {
+  for (var j = 0; j < allProjects.length; j++) {
+    if (req.body.id == allProjects[j].id) {
+      allProjects.splice(j, 1);
     }
-    res.redirect("/projectList");
+  }
+  res.redirect("/projectList");
 });
 
 router.get('/logout', function (req, res, next) {
   // To logout I simply destroy the session (and thus the username property on it)
   //req.session.destroy();
-   username = "";
-   password = "";
+  username = "";
+  password = "";
   res.render('loginAccount');
 });
 

@@ -12,3 +12,6 @@ This application does the following:
 	- It stores all the information in a Mongo DB
 	- It has secure login and also without correct login credential you can't access any editing page related to the portfolio builder
 	- User login is custom, a user must create an account if they want to edit the portfolio
+	
+Note: When using assignment, in order to login, you must create an account first, the username and password caergories are in fact your login details, 
+without them you will not be able to access pages such as: admin, project entry and project list

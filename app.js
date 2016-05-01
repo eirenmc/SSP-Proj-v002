@@ -54,12 +54,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('/public/uploads'));
 
+//
 var storageMethod = multer.diskStorage({
   destination: function (req, file, cb) {
     console.log("In destination");
     fs.exists('./public/uploads/', function (exists) {
       if (!exists) {
-        //fs.mkdir('./bin/uploads/', function(error){
         fs.mkdir('./public/uploads/', function (error) {
           cb(error, './public/uploads/');
         })
