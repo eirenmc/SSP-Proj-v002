@@ -1,13 +1,17 @@
 body {
-  padding: 0px;
+  padding:0px;
   margin:0px;
-  margin-left:5%;
-  margin-right:5%;
+  padding-left:5%;
+  padding-right:5%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  text-decoration: none;
+}
+
+.extraPadding{
+  margin: 5%;
 }
 
 .smallInputs{
@@ -22,35 +26,31 @@ form{
   padding-left: 1%;
 }
 
+.jumbtron{
+  padding:3%;
+}
+
 @media screen and (min-width: 700px) {
   body{
-    margin-left:5%;
-    margin-right:5%;
-  }
-  
-  .smallInputs{
-    width:60%;
+    padding-left:5%;
+    padding-right:5%;
   }
 }
 
 @media screen and (min-width: 768px) {
   body{
-    margin-left:25%;
-    margin-right:5%;
+    padding-left:5%;
+    padding-right:5%;
   }
-  
-  .smallInputs{
-    width:80%;
-  }
-  
+  /*
   .container{
-  margin-left: 10%;
-}
+    padding-left: 10%;
+  }*/
 }
 
 @media screen and (min-width: 1000px) {
   body{
-    margin-left:20%;
+    padding-left:5%;
   }
   
 }

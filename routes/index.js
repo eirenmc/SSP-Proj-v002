@@ -7,6 +7,8 @@ var files = new Array();
 var username = "";
 var password = "";
 
+var allProjects = [];
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 // MongoDB
@@ -22,7 +24,7 @@ var url = process.env.CUSTOMCONNSTR_portfolioBuilderEiren || 'mongodb://localhos
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Portfolio Home Page' });
+  //res.render('index', { project: docs });
 });
 
 /* Renders the create portfolio piece page if button clicked */
@@ -38,7 +40,13 @@ router.get('/projectEntry', function (req, res, next) {
 router.post('/projectEntry', function (req, res, next) {
   //console.log(req.body);
   //console.log(req.file);
-  res.render('admin', { title: 'Portfolio Project' });
+
+  var project = {};
+  project.title = req.body.projectTitleText;
+  project.desc = req.body.projectDescText;
+  project.tags = req.body.projectTagsText;
+
+  allProjects.push(project);
 
   /////////////////////////////////////////////////////////////////
   // MongoDB
@@ -49,36 +57,31 @@ router.post('/projectEntry', function (req, res, next) {
       throw err;
     } else {
       console.log("There is a connection for the projectEntry page");
+      conn.collection('project').insertOne(project, function (err, result) {
+        if (err) {
+          console.log(err);
+          throw err;
+        }
+        else {
+          var cursor = conn.collection('projects').find();
+          cursor.toArray(function (err, docs) {
+            console.log("Insertion complete");
+            conn.close();
+          });
+        }
+      });
     }
   });
   //////////////////////////////////////////////////////////// 
-
+    
+  res.render('admin', { title: 'Portfolio Project' });
 });
 
 /* Renders the login page if button clicked */
 router.get('/loginAccount', function (req, res, next) {
-  res.render('loginAccount', { title: 'Login to manage your Portfolio' });
-
   console.log('The username is :' + username);
   console.log('The username that was typed was' + username);
-});
-
-router.post('loginAccount', function (req, res, next) {
-  //username = req.body.username;
-  //password = req.body.password;
-
-  //////////////////////////////////////////////// 
-  /*var username = req.body.username;
-  username = username.trim();
-
-  if (username.length == 0) {
-    res.redirect('/login');
-  }
-  else {
-    req.session.username = username;
-    res.redirect('/admin');
-  }*/
-  ////////////////////////////////////////////////
+  res.render('loginAccount', { title: 'Login to manage your Portfolio' });
 });
 
 /* Renders the project list page if button clicked */
@@ -92,7 +95,7 @@ router.get('/admin', function (req, res, next) {
 });
 
 /* Renders the admin page if button clicked */
-router.post('/admin', function (req, res, next) {
+router.post('/loginAccount', function (req, res, next) {
   if ((username == req.body.username) && (password == req.body.password)) {
     console.log("hi");
     res.render('admin', { title: 'Manage your portfolio' });
@@ -105,8 +108,8 @@ router.post('/admin', function (req, res, next) {
 });
 
 /* Renders the project list page if button clicked */
-router.get('/projectList', function (req, res, next) {  
-    if (username.length == 0) {
+router.get('/projectList', function (req, res, next) {
+  if (username.length == 0) {
     res.render('loginAccount', { title: 'login' });
   } else {
     res.render('projectList', { title: 'Portfolio Pieces' });
@@ -138,7 +141,11 @@ router.post('/createAccount', function (req, res, next) {
     }*/
   username = req.body.username;
   password = req.body.password;
+  username = username.trim();
+  password = password.trim();
+
   console.log(username);
+  console.log(password);
 
   res.render('loginAccount');
 });
