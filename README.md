@@ -6,8 +6,9 @@ The aim of this assignment is to build an application that allows a user to logi
 
 This application does the following:
 	
-	- It can ulpoad images to a folder called uploads
-	-
-	-
-	-
-	-
+	- It can upload images to a folder called uploads in the public directory
+	- It is responsive for mobile and tablets
+	- It can display the fields entered in the 'New Project' page
+	- It stores all the information in a Mongo DB
+	- It has secure login and also without correct login credential you can't access any editing page related to the portfolio builder
+	- User login is custom, a user must create an account if they want to edit the portfolio

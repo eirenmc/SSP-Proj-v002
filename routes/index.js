@@ -30,10 +30,6 @@ router.get('/', function (req, res, next) {
   res.render('index');
 });
 
-router.get('portfolio', function (req, res, next){
-    res.render('portfolio', {project: docs}); 
-});
-
 /* Renders the create portfolio piece page if button clicked */
 router.get('/projectEntry', function (req, res, next) {
   if (username.length == 0) {
@@ -70,6 +66,7 @@ router.post('/projectEntry', function (req, res, next) {
         else {
           var cursor = conn.collection('projects').find();
           cursor.toArray(function (err, docs) {
+            res.render('portfolio', {project: docs}); 
             console.log("Insertion complete");
             conn.close();
           });
@@ -80,6 +77,10 @@ router.post('/projectEntry', function (req, res, next) {
   //////////////////////////////////////////////////////////// 
 
   res.render('admin', { title: 'Portfolio Project' });
+});
+
+router.get('/portfolio', function (req, res, next){
+    res.render('portfolio', {project: allProjects, username : username}); 
 });
 
 /* Renders the login page if button clicked */

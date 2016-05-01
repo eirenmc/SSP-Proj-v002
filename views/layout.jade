@@ -7,8 +7,10 @@ html
   body
     nav.navbar.navbar-default
       div.container-fluid
-        img.navbar-brand(src="./images/pbLogo.png" alt="Brand")
+        a(href="admin")
+          img.navbar-brand(src="./images/pbLogo.png" alt="Brand")
         strong
-          span.navbar-brand Portfolio Builder
+          a(href="admin")
+            span.navbar-brand Portfolio Builder
     block content
        

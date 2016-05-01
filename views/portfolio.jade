@@ -1,14 +1,17 @@
 extends layout
 
 block content
+    h1 #{username}  Portfolio
     div.container
-    
-    p #{val.username} Portfolio
-    
-    -var values = projects;
-    ol
-        each val in values ? values : ['There are no values']
-            li #{val.title}
-                p #{val.desc}
-                p #{val.tags}
-            br
+        -var values = project;
+        ol
+            each val in values ? values : ['There are no values']
+                li
+                    strong
+                        p Project Title: 
+                    p #{val.title}
+                    strong
+                        p Project Description:
+                    p #{val.desc}
+                    p #{val.tags}
+                br
