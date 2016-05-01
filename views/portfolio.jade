@@ -1,3 +1,14 @@
 extends layout
 
 block content
+    div.container
+    
+    p #{val.username} Portfolio
+    
+    -var values = projects;
+    ol
+        each val in values ? values : ['There are no values']
+            li #{val.title}
+                p #{val.desc}
+                p #{val.tags}
+            br

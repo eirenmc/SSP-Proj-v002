@@ -30,6 +30,10 @@ router.get('/', function (req, res, next) {
   res.render('index');
 });
 
+router.get('portfolio', function (req, res, next){
+    res.render('portfolio', {project: docs}); 
+});
+
 /* Renders the create portfolio piece page if button clicked */
 router.get('/projectEntry', function (req, res, next) {
   if (username.length == 0) {
@@ -41,8 +45,6 @@ router.get('/projectEntry', function (req, res, next) {
 
 /* Renders the create portfolio piece page if button clicked */
 router.post('/projectEntry', function (req, res, next) {
-  //console.log(req.body);
-  //console.log(req.file);
 
   var project = {};
   project.title = req.body.projectTitleText;

@@ -17,10 +17,17 @@ var routes = require('./routes/index');
 //////////////////////////////////////////////////////////////////////////////////////////
 //Mongo
 
+// I am requiring mongoDB and client so I can establish a database and connection so secrets can
+// be stored in the database
 var mongoClient = require('mongodb').MongoClient;
 
+// This is a variable that will either run the database from the set environment variables I have
+// set online or local host address
 var url = process.env.CUSTOMCONNSTR_portfolioBuilderEiren || 'mongodb://localhost:27017/mongoDBAssignment02';
 
+// As I had trouble in the past with MongoDB, I wanted to make sure that a connection was being
+// established and if it is establishing a connection it console logs it for me, with this I know
+// the mongoDB database is connected and working
 mongoClient.connect(url, function (err, conn) {
   if (err) {
     console.log(err.message);
